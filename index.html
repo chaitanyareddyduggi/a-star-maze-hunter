@@ -1,0 +1,521 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>A* Maze Hunter</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+        <!-- ========================================= -->
+        <!-- HEADER -->
+        <!-- ========================================= -->
+
+        <header class="topbar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    A*
+                </div>
+
+                <div>
+
+                    <h1>A* Maze Hunter</h1>
+
+                    <p>
+                        Intelligent Pathfinding Challenge
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                <span>
+                    A* PATHFINDING ACTIVE
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- ========================================= -->
+        <!-- MAIN DASHBOARD -->
+        <!-- ========================================= -->
+
+        <main class="dashboard">
+
+
+            <!-- ===================================== -->
+            <!-- LEFT SIDEBAR -->
+            <!-- ===================================== -->
+
+            <aside class="left-panel">
+
+
+                <!-- GAME INTRO -->
+
+                <section class="glass-card intro-card">
+
+                    <div class="section-label">
+                        MISSION
+                    </div>
+
+                    <h2>
+                        Escape the
+                        <span>A* Hunter</span>
+                    </h2>
+
+                    <p>
+                        Reach the goal while avoiding
+                        the intelligent enemy that uses
+                        the A* pathfinding algorithm.
+                    </p>
+
+                </section>
+
+
+                <!-- CONTROLS -->
+
+                <section class="glass-card">
+
+                    <div class="section-label">
+                        CONTROLS
+                    </div>
+
+                    <div class="keyboard">
+
+                        <div class="key-row">
+
+                            <div class="key empty-key"></div>
+
+                            <div class="key">
+                                W
+                            </div>
+
+                            <div class="key empty-key"></div>
+
+                        </div>
+
+
+                        <div class="key-row">
+
+                            <div class="key">
+                                A
+                            </div>
+
+                            <div class="key">
+                                S
+                            </div>
+
+                            <div class="key">
+                                D
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <p class="control-text">
+                        Use WASD or Arrow Keys
+                        to move your player.
+                    </p>
+
+                </section>
+
+
+                <!-- LEGEND -->
+
+                <section class="glass-card">
+
+                    <div class="section-label">
+                        LEGEND
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-icon player-icon">
+                            ●
+                        </span>
+
+                        <span>
+                            Player
+                        </span>
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-icon enemy-icon">
+                            ●
+                        </span>
+
+                        <span>
+                            A* Enemy
+                        </span>
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-icon goal-icon">
+                            ◆
+                        </span>
+
+                        <span>
+                            Goal
+                        </span>
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-icon path-icon">
+                            •
+                        </span>
+
+                        <span>
+                            A* Path
+                        </span>
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-icon wall-icon">
+                            ■
+                        </span>
+
+                        <span>
+                            Wall
+                        </span>
+
+                    </div>
+
+                </section>
+
+
+            </aside>
+
+
+            <!-- ===================================== -->
+            <!-- CENTER GAME AREA -->
+            <!-- ===================================== -->
+
+            <section class="game-section">
+
+
+                <div class="game-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            LIVE MAZE
+                        </span>
+
+                        <h2>
+                            Navigate the Grid
+                        </h2>
+
+                    </div>
+
+
+                    <div class="algorithm-badge">
+
+                        <span>
+                            ●
+                        </span>
+
+                        A* AI
+
+                    </div>
+
+                </div>
+
+
+                <!-- EXISTING GAME BOARD -->
+
+                <div class="board-wrapper">
+
+                    <div id="game-board"></div>
+
+                </div>
+
+
+                <!-- GAME STATUS -->
+
+                <div class="game-status">
+
+                    <div class="status-icon">
+                        ⚡
+                    </div>
+
+                    <div>
+
+                        <span class="status-title">
+                            SYSTEM STATUS
+                        </span>
+
+                        <div id="message">
+                            Find the goal and survive!
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RESTART -->
+
+                <button id="restartBtn"
+                        class="restart-button">
+
+                    <span>
+                        ↻
+                    </span>
+
+                    Restart Game
+
+                </button>
+
+
+            </section>
+
+
+            <!-- ===================================== -->
+            <!-- RIGHT SIDEBAR -->
+            <!-- ===================================== -->
+
+            <aside class="right-panel">
+
+
+                <!-- SCORE -->
+
+                <div class="stat-card score-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            SCORE
+                        </span>
+
+                        <span class="stat-symbol">
+                            ◈
+                        </span>
+
+                    </div>
+
+                    <div class="stat-value"
+                         id="score">
+                        0
+                    </div>
+
+                    <div class="stat-subtitle">
+                        Points earned
+                    </div>
+
+                </div>
+
+
+                <!-- LIVES -->
+
+                <div class="stat-card lives-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            LIVES
+                        </span>
+
+                        <span class="stat-symbol">
+                            ♡
+                        </span>
+
+                    </div>
+
+                    <div class="lives-display"
+                         id="lives">
+
+                        3
+
+                    </div>
+
+                    <div class="stat-subtitle">
+                        Remaining attempts
+                    </div>
+
+                </div>
+
+
+                <!-- TIME -->
+
+                <div class="stat-card time-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            TIME
+                        </span>
+
+                        <span class="stat-symbol">
+                            ◷
+                        </span>
+
+                    </div>
+
+                    <div class="stat-value">
+
+                        <span id="timer">
+                            60
+                        </span>
+
+                        <small>
+                            SEC
+                        </small>
+
+                    </div>
+
+                    <div class="stat-subtitle">
+                        Time remaining
+                    </div>
+
+                </div>
+
+
+                <!-- LEVEL -->
+
+                <div class="stat-card level-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            LEVEL
+                        </span>
+
+                        <span class="stat-symbol">
+                            ◆
+                        </span>
+
+                    </div>
+
+                    <div class="stat-value"
+                         id="level">
+
+                        1
+
+                    </div>
+
+                    <div class="level-progress">
+
+                        <div class="level-progress-bar"></div>
+
+                    </div>
+
+                    <div class="stat-subtitle">
+                        Difficulty increases
+                    </div>
+
+                </div>
+
+
+                <!-- AI INFO -->
+
+                <div class="glass-card ai-card">
+
+                    <div class="section-label">
+                        AI ENGINE
+                    </div>
+
+                    <div class="ai-title">
+
+                        <span class="ai-pulse"></span>
+
+                        A* PATHFINDER
+
+                    </div>
+
+                    <p>
+                        The enemy calculates the
+                        shortest route to your current
+                        position using A* search.
+                    </p>
+
+                    <div class="ai-tags">
+
+                        <span>
+                            A*
+                        </span>
+
+                        <span>
+                            Manhattan
+                        </span>
+
+                        <span>
+                            Dynamic
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </aside>
+
+
+        </main>
+
+
+        <!-- ========================================= -->
+        <!-- FOOTER -->
+        <!-- ========================================= -->
+
+        <footer>
+
+            <span>
+                A* Maze Hunter
+            </span>
+
+            <span>
+                Intelligent Grid Navigation
+            </span>
+
+            <span>
+                JavaScript • A* Algorithm
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+```

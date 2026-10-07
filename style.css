@@ -1,0 +1,1465 @@
+```css
+/* =====================================================
+   A* MAZE HUNTER
+   Modern Futuristic Gaming UI
+   ===================================================== */
+
+
+/* =====================================================
+   GLOBAL
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #e5e7eb;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(37, 99, 235, 0.18),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(124, 58, 237, 0.16),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(6, 182, 212, 0.10),
+            transparent 35%
+        ),
+
+        #050816;
+
+}
+
+
+/* =====================================================
+   APP
+   ===================================================== */
+
+.app {
+
+    width: 100%;
+
+    max-width: 1500px;
+
+    margin: auto;
+
+    padding: 25px;
+
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.topbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 18px 24px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid
+        rgba(148, 163, 184, 0.15);
+
+    border-radius: 18px;
+
+    background:
+        rgba(15, 23, 42, 0.72);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.25);
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.brand-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    box-shadow:
+        0 0 25px
+        rgba(59, 130, 246, 0.35);
+
+}
+
+
+.brand h1 {
+
+    margin: 0;
+
+    font-size: 24px;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+.brand p {
+
+    margin: 3px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+}
+
+
+.system-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 10px 15px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(34, 197, 94, 0.08);
+
+    border: 1px solid
+        rgba(34, 197, 94, 0.20);
+
+    color: #86efac;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+}
+
+
+.status-dot {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 12px #22c55e;
+
+    animation:
+        pulse 1.5s infinite;
+
+}
+
+
+@keyframes pulse {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.45;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+.dashboard {
+
+    display: grid;
+
+    grid-template-columns:
+        250px
+        minmax(500px, 1fr)
+        250px;
+
+    gap: 20px;
+
+    align-items: start;
+
+}
+
+
+/* =====================================================
+   GLASS CARD
+   ===================================================== */
+
+.glass-card {
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(15, 23, 42, 0.70);
+
+    border: 1px solid
+        rgba(148, 163, 184, 0.13);
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.20);
+
+}
+
+
+/* =====================================================
+   SECTION LABEL
+   ===================================================== */
+
+.section-label {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* =====================================================
+   LEFT PANEL
+   ===================================================== */
+
+.left-panel {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+}
+
+
+.intro-card h2 {
+
+    margin: 0 0 12px;
+
+    font-size: 22px;
+
+    line-height: 1.25;
+
+}
+
+
+.intro-card h2 span {
+
+    color: #60a5fa;
+
+}
+
+
+.intro-card p {
+
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =====================================================
+   KEYBOARD
+   ===================================================== */
+
+.keyboard {
+
+    margin: 15px 0;
+
+}
+
+
+.key-row {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-bottom: 7px;
+
+}
+
+
+.key {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background:
+        #111827;
+
+    border: 1px solid
+        #334155;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 4px 0 #020617;
+
+}
+
+
+.empty-key {
+
+    visibility: hidden;
+
+}
+
+
+.control-text {
+
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    text-align: center;
+
+}
+
+
+/* =====================================================
+   LEGEND
+   ===================================================== */
+
+.legend-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 8px 0;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+}
+
+
+.legend-icon {
+
+    width: 28px;
+
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+}
+
+
+.player-icon {
+
+    background:
+        rgba(34, 197, 94, 0.15);
+
+    color: #4ade80;
+
+}
+
+
+.enemy-icon {
+
+    background:
+        rgba(239, 68, 68, 0.15);
+
+    color: #f87171;
+
+}
+
+
+.goal-icon {
+
+    background:
+        rgba(234, 179, 8, 0.15);
+
+    color: #facc15;
+
+}
+
+
+.path-icon {
+
+    background:
+        rgba(37, 99, 235, 0.15);
+
+    color: #60a5fa;
+
+}
+
+
+.wall-icon {
+
+    background:
+        rgba(71, 85, 105, 0.3);
+
+    color: #64748b;
+
+}
+
+
+/* =====================================================
+   CENTER GAME SECTION
+   ===================================================== */
+
+.game-section {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+.game-header {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+
+}
+
+
+.game-header h2 {
+
+    margin: 0;
+
+    font-size: 20px;
+
+}
+
+
+.algorithm-badge {
+
+    padding: 8px 13px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(59, 130, 246, 0.10);
+
+    border: 1px solid
+        rgba(59, 130, 246, 0.25);
+
+    color: #93c5fd;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+}
+
+
+.algorithm-badge span {
+
+    color: #22c55e;
+
+    margin-right: 5px;
+
+}
+
+
+/* =====================================================
+   BOARD WRAPPER
+   ===================================================== */
+
+.board-wrapper {
+
+    padding: 14px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 41, 59, 0.85),
+            rgba(15, 23, 42, 0.95)
+        );
+
+    border: 1px solid
+        rgba(96, 165, 250, 0.15);
+
+    box-shadow:
+
+        0 25px 60px
+        rgba(0, 0, 0, 0.40),
+
+        0 0 50px
+        rgba(37, 99, 235, 0.08);
+
+}
+
+
+/* =====================================================
+   GAME BOARD
+   ===================================================== */
+
+#game-board {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(10, 44px);
+
+    grid-template-rows:
+        repeat(10, 44px);
+
+    width: 440px;
+
+    height: 440px;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    border: 2px solid
+        rgba(96, 165, 250, 0.30);
+
+    background: #020617;
+
+}
+
+
+/* =====================================================
+   CELLS
+   ===================================================== */
+
+.cell {
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid
+        rgba(71, 85, 105, 0.18);
+
+    font-size: 20px;
+
+    user-select: none;
+
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+
+}
+
+
+.empty {
+
+    background:
+        rgba(15, 23, 42, 0.90);
+
+}
+
+
+.wall {
+
+    background:
+        linear-gradient(
+            135deg,
+            #1e293b,
+            #0f172a
+        );
+
+    color: #475569;
+
+}
+
+
+.player {
+
+    background:
+        rgba(34, 197, 94, 0.20);
+
+    box-shadow:
+        inset 0 0 18px
+        rgba(34, 197, 94, 0.30);
+
+}
+
+
+.enemy {
+
+    background:
+        rgba(239, 68, 68, 0.20);
+
+    box-shadow:
+        inset 0 0 18px
+        rgba(239, 68, 68, 0.30);
+
+}
+
+
+.goal {
+
+    background:
+        rgba(234, 179, 8, 0.20);
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(234, 179, 8, 0.30);
+
+}
+
+
+.path {
+
+    background:
+        rgba(37, 99, 235, 0.30);
+
+    color: #60a5fa;
+
+    box-shadow:
+        inset 0 0 12px
+        rgba(59, 130, 246, 0.15);
+
+}
+
+
+.visited {
+
+    background:
+        rgba(124, 58, 237, 0.14);
+
+}
+
+
+/* =====================================================
+   GAME STATUS
+   ===================================================== */
+
+.game-status {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 15px;
+
+    padding: 14px 17px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.70);
+
+    border: 1px solid
+        rgba(148, 163, 184, 0.12);
+
+}
+
+
+.status-icon {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(59, 130, 246, 0.12);
+
+    font-size: 18px;
+
+}
+
+
+.status-title {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #64748b;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    font-weight: 800;
+
+}
+
+
+#message {
+
+    min-height: 18px;
+
+    color: #cbd5e1;
+
+    font-size: 13px;
+
+}
+
+
+/* =====================================================
+   RESTART BUTTON
+   ===================================================== */
+
+.restart-button {
+
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 13px 20px;
+
+    border: 1px solid
+        rgba(96, 165, 250, 0.25);
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(37, 99, 235, 0.20);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.restart-button span {
+
+    margin-right: 7px;
+
+    font-size: 17px;
+
+}
+
+
+.restart-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 30px
+        rgba(37, 99, 235, 0.35);
+
+}
+
+
+.restart-button:active {
+
+    transform: translateY(0);
+
+}
+
+
+/* =====================================================
+   RIGHT PANEL
+   ===================================================== */
+
+.right-panel {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+}
+
+
+/* =====================================================
+   STAT CARDS
+   ===================================================== */
+
+.stat-card {
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(15, 23, 42, 0.72);
+
+    border: 1px solid
+        rgba(148, 163, 184, 0.12);
+
+    backdrop-filter: blur(15px);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+
+}
+
+
+.stat-card:hover {
+
+    transform: translateY(-2px);
+
+    border-color:
+        rgba(96, 165, 250, 0.25);
+
+}
+
+
+.stat-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.stat-label {
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.stat-symbol {
+
+    color: #60a5fa;
+
+    font-size: 18px;
+
+}
+
+
+.stat-value {
+
+    margin-top: 8px;
+
+    color: #f8fafc;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+}
+
+
+.stat-value small {
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+}
+
+
+.stat-subtitle {
+
+    margin-top: 7px;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+}
+
+
+/* =====================================================
+   LIVES
+   ===================================================== */
+
+.lives-display {
+
+    margin-top: 8px;
+
+    color: #fb7185;
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    letter-spacing: 4px;
+
+}
+
+
+/* =====================================================
+   LEVEL
+   ===================================================== */
+
+.level-progress {
+
+    height: 4px;
+
+    margin-top: 12px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #1e293b;
+
+}
+
+
+.level-progress-bar {
+
+    width: 35%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #8b5cf6
+        );
+
+}
+
+
+/* =====================================================
+   AI CARD
+   ===================================================== */
+
+.ai-card {
+
+    padding: 18px;
+
+}
+
+
+.ai-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #93c5fd;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+}
+
+
+.ai-pulse {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 10px #22c55e;
+
+}
+
+
+.ai-card p {
+
+    margin: 10px 0 13px;
+
+    color: #64748b;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+}
+
+
+.ai-tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+}
+
+
+.ai-tags span {
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    background:
+        rgba(59, 130, 246, 0.08);
+
+    border: 1px solid
+        rgba(59, 130, 246, 0.12);
+
+    color: #60a5fa;
+
+    font-size: 9px;
+
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 20px;
+
+    padding: 15px 5px;
+
+    color: #475569;
+
+    font-size: 10px;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE - TABLET
+   ===================================================== */
+
+@media (max-width: 1150px) {
+
+    .dashboard {
+
+        grid-template-columns:
+            210px
+            minmax(450px, 1fr)
+            210px;
+
+        gap: 15px;
+
+    }
+
+
+    #game-board {
+
+        grid-template-columns:
+            repeat(10, 40px);
+
+        grid-template-rows:
+            repeat(10, 40px);
+
+        width: 400px;
+
+        height: 400px;
+
+    }
+
+
+    .cell {
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 18px;
+
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE - SMALL TABLET
+   ===================================================== */
+
+@media (max-width: 950px) {
+
+    .dashboard {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .game-section {
+
+        grid-column:
+            1 / -1;
+
+        grid-row: 1;
+
+        order: -1;
+
+    }
+
+
+    .left-panel {
+
+        grid-column: 1;
+
+    }
+
+
+    .right-panel {
+
+        grid-column: 2;
+
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE - MOBILE
+   ===================================================== */
+
+@media (max-width: 650px) {
+
+    .app {
+
+        padding: 12px;
+
+    }
+
+
+    .topbar {
+
+        padding: 15px;
+
+    }
+
+
+    .brand h1 {
+
+        font-size: 19px;
+
+    }
+
+
+    .brand p {
+
+        display: none;
+
+    }
+
+
+    .brand-icon {
+
+        width: 44px;
+
+        height: 44px;
+
+        font-size: 19px;
+
+    }
+
+
+    .system-status {
+
+        display: none;
+
+    }
+
+
+    .dashboard {
+
+        display: flex;
+
+        flex-direction: column;
+
+    }
+
+
+    .game-section {
+
+        width: 100%;
+
+    }
+
+
+    .board-wrapper {
+
+        width: 100%;
+
+        overflow-x: auto;
+
+        padding: 10px;
+
+    }
+
+
+    #game-board {
+
+        flex-shrink: 0;
+
+        grid-template-columns:
+            repeat(10, 34px);
+
+        grid-template-rows:
+            repeat(10, 34px);
+
+        width: 340px;
+
+        height: 340px;
+
+    }
+
+
+    .cell {
+
+        width: 34px;
+
+        height: 34px;
+
+        font-size: 15px;
+
+    }
+
+
+    .left-panel,
+
+    .right-panel {
+
+        width: 100%;
+
+    }
+
+
+    .right-panel {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .ai-card {
+
+        grid-column:
+            1 / -1;
+
+    }
+
+
+    footer {
+
+        flex-direction: column;
+
+        gap: 7px;
+
+        text-align: center;
+
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL SCREENS
+   ===================================================== */
+
+@media (max-width: 380px) {
+
+    #game-board {
+
+        grid-template-columns:
+            repeat(10, 29px);
+
+        grid-template-rows:
+            repeat(10, 29px);
+
+        width: 290px;
+
+        height: 290px;
+
+    }
+
+
+    .cell {
+
+        width: 29px;
+
+        height: 29px;
+
+        font-size: 13px;
+
+    }
+
+}
+```
